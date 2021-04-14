@@ -11,9 +11,11 @@ class Post(models.Model):
         return self.id_from_vk
 
 class PostImage(models.Model):
-    post_id = models.ForeignKey(Post, verbose_name="id поста", on_delete=models.CASCADE)
+    post_id = models.PositiveSmallIntegerField("ID VK поста", blank=False)
     photo = models.ImageField("Картинка поста", blank=True)
 
+    def __str__(self):
+        return self.post_id
 
 
 
