@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{%load static%}
+
+{% block title %}
+  {{post.vk_id}}
+{% endblock %}
+
+{% block image %}
+  <div class="container">
+    <h3>Картинка поста</h3>
+    <div class="row">
+    {%for i in post_image%}
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{% get_media_prefix %}{{i.photo}}" alt="{{i.photo}}" width="300" height="300">
+      </div>
+    {%endfor%}
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h3>Текст поста</h3>
+    <div class="row">
+      <p><big>{{post.text}}</big></p>
+    </div>
+  </div>
+{% endblock %}
