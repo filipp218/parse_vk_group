@@ -18,5 +18,4 @@ def paginate(request, posts):
         # Если страница больше максимальной, доставить последнюю страницу результатов
         posts = paginator.page(paginator.num_pages)
 
-    context = {"page": page, "posts": posts}
-    return context
+    return posts
