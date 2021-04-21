@@ -24,9 +24,9 @@ class PostAdmin(admin.ModelAdmin):
 
 class PostImageAdmin(admin.ModelAdmin):
     readonly_fields = ["preview"]
-
+    list_display = ('preview', 'post')
     def preview(self, obj):
-        return mark_safe(f'<img src="/media/{obj.photo}" width="300" height="300">')
+        return mark_safe(f'<img src="/media/{obj.photo}" width="150" height="150">')
 
 
 admin.site.register(models.Post, PostAdmin)

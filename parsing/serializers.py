@@ -3,24 +3,24 @@ from rest_framework import serializers
 from .models import Post, PostImage
 
 
-class PostListSerializer(serializers.ModelSerializer):
-    """Список постов"""
+class PostDetailSerializerData(serializers.ModelSerializer):
+    """Текстовая часть поста"""
 
     class Meta:
         model = Post
-        fields = ("text", "date_of_post", "vk_id", "url")
+        fields = ("id", "text", "date_of_post", "vk_id", "url")
 
 
-class PostDetailSerializer(serializers.ModelSerializer):
-    """Один пост"""
+class PostDetailSerializerPhoto(serializers.ModelSerializer):
+    """Фотографии"""
 
     class Meta:
         model = PostImage
         fields = ("photo",)
 
 
-class PostDetailSerializerPhoto(serializers.Serializer):
-    """Картинки поста"""
-    post = PostListSerializer(read_only=True)
-    photos = PostDetailSerializer(read_only=True, many=True)
+class PostDetailSerializer(serializers.Serializer):
+    """Детали поста"""
+    post = PostDetailSerializerData(read_only=True)
+    photos = PostDetailSerializerPhoto(read_only=True, many=True)
 
