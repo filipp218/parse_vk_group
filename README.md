@@ -15,3 +15,12 @@
 Функции REST API:
 1) Получение списка новостей (должен быть pagination и фильтр по дате)
 2) Получение одной новости по ID
+
+- Чтобы посты скачивались раз в день, то воспользуйтесь встроенной программой на Linux — crontab
+
+```
+crontab -e
+```
+```
+59 11 * * * cd <path to the repo root> && python manage.py parsingvk --token <token vk> --group_id <group id vk>
+```
